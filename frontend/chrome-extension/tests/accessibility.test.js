@@ -1,17 +1,16 @@
-import { AccessibilityController } from '../content.js';
+const { AccessibilityController } = require('../src/accessibility-controller.js');
 
 describe('AccessibilityController', () => {
   let controller;
-  let mockDocument;
 
   beforeEach(() => {
-    mockDocument = {
-      querySelectorAll: jest.fn(),
-      createElement: jest.fn(),
-      body: {
-        appendChild: jest.fn(),
-      },
-    };
+    document.body.innerHTML = '';
+    document.body.style.zoom = '1';
+    Object.defineProperty(window, 'scrollBy', {
+      value: jest.fn(),
+      writable: true,
+      configurable: true,
+    });
 
     global.chrome = {
       storage: {
@@ -30,105 +29,69 @@ describe('AccessibilityController', () => {
 
   describe('processImages', () => {
     it('should add alt text to images without alt attribute', async () => {
-      const mockImage = {
-        alt: '',
-        src: 'test.jpg',
-        setAttribute: jest.fn(),
-      };
-
-      mockDocument.querySelectorAll.mockReturnValue([mockImage]);
+      document.body.innerHTML = '<img src="test.jpg" alt="" />';
+      const image = document.querySelector('img');
 
       await controller.processImages();
 
-      expect(mockImage.setAttribute).toHaveBeenCalledWith('alt', expect.any(String));
+      expect(image.getAttribute('alt')).toContain('AutoAccess generated description');
     });
 
     it('should not modify images with existing alt text', async () => {
-      const mockImage = {
-        alt: 'Existing alt text',
-        src: 'test.jpg',
-        setAttribute: jest.fn(),
-      };
-
-      mockDocument.querySelectorAll.mockReturnValue([mockImage]);
+      document.body.innerHTML = '<img src="test.jpg" alt="Existing alt text" />';
+      const image = document.querySelector('img');
 
       await controller.processImages();
 
-      expect(mockImage.setAttribute).not.toHaveBeenCalled();
+      expect(image.getAttribute('alt')).toBe('Existing alt text');
     });
   });
 
   describe('adjustColorContrast', () => {
     it('should adjust text color for low contrast elements', () => {
-      const mockElement = {
-        style: {
-          color: 'rgb(200, 200, 200)',
-          backgroundColor: 'rgb(255, 255, 255)',
-        },
-      };
-
-      mockDocument.querySelectorAll.mockReturnValue([mockElement]);
+      const el = document.createElement('div');
+      el.style.color = 'rgb(200, 200, 200)';
+      el.style.backgroundColor = 'rgb(255, 255, 255)';
+      document.body.appendChild(el);
 
       controller.adjustColorContrast();
 
-      expect(mockElement.style.color).not.toBe('rgb(200, 200, 200)');
+      expect(el.style.color).toBe('rgb(33, 33, 33)');
     });
 
     it('should not modify elements with sufficient contrast', () => {
-      const mockElement = {
-        style: {
-          color: 'rgb(0, 0, 0)',
-          backgroundColor: 'rgb(255, 255, 255)',
-        },
-      };
-
-      mockDocument.querySelectorAll.mockReturnValue([mockElement]);
+      const el = document.createElement('div');
+      el.style.color = 'rgb(0, 0, 0)';
+      el.style.backgroundColor = 'rgb(255, 255, 255)';
+      document.body.appendChild(el);
 
       controller.adjustColorContrast();
 
-      expect(mockElement.style.color).toBe('rgb(0, 0, 0)');
+      expect(el.style.color).toBe('rgb(0, 0, 0)');
     });
   });
 
   describe('handleVoiceCommand', () => {
     it('should handle scroll commands', () => {
-      const mockWindow = {
-        scrollBy: jest.fn(),
-      };
-
-      global.window = mockWindow;
-
       controller.handleVoiceCommand('scroll down');
 
-      expect(mockWindow.scrollBy).toHaveBeenCalledWith(0, expect.any(Number));
+      expect(window.scrollBy).toHaveBeenCalledWith(0, expect.any(Number));
     });
 
     it('should handle zoom commands', () => {
-      const mockDocument = {
-        body: {
-          style: {
-            zoom: '1',
-          },
-        },
-      };
-
-      global.document = mockDocument;
-
       controller.handleVoiceCommand('zoom in');
 
-      expect(mockDocument.body.style.zoom).toBe('1.1');
+      expect(document.body.style.zoom).toBe('1.1');
     });
 
     it('should handle navigation commands', () => {
-      const mockLink = {
-        click: jest.fn(),
-      };
-
-      mockDocument.querySelector.mockReturnValue(mockLink);
+      document.body.innerHTML = '<a href="#" id="about">About Us</a>';
+      const link = document.getElementById('about');
+      link.click = jest.fn();
 
       controller.handleVoiceCommand('go to about');
 
-      expect(mockLink.click).toHaveBeenCalled();
+      expect(link.click).toHaveBeenCalled();
     });
   });
 

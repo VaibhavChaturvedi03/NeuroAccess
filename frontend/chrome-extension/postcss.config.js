@@ -7,23 +7,29 @@ module.exports = {
         'nesting-rules': true,
         'custom-properties': true,
         'custom-media-queries': true,
-        'media-query-ranges': true
-      }
+        'media-query-ranges': true,
+      },
     },
     'postcss-nested': {},
     'postcss-custom-media': {},
     'postcss-custom-properties': {},
     'postcss-flexbugs-fixes': {},
     'postcss-normalize': {},
-    'autoprefixer': {
-      flexbox: 'no-2009'
+    autoprefixer: {
+      flexbox: 'no-2009',
     },
-    'cssnano': process.env.NODE_ENV === 'production' ? {
-      preset: ['default', {
-        discardComments: {
-          removeAll: true
-        }
-      }]
-    } : false
-  }
-}; 
+    cssnano:
+      process.env.NODE_ENV === 'production'
+        ? {
+            preset: [
+              'default',
+              {
+                discardComments: {
+                  removeAll: true,
+                },
+              },
+            ],
+          }
+        : false,
+  },
+};

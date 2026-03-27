@@ -1,16 +1,31 @@
-// Content script that runs in the context of web pages
+const { AccessibilityController } = require('./accessibility-controller');
+
 console.log('AutoAccess content script loaded');
 
-// Listen for messages from the popup
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === 'getPageInfo') {
-    // Get page information
-    const pageInfo = {
-      title: document.title,
-      url: window.location.href,
-      // Add more page information as needed
-    };
-    sendResponse(pageInfo);
-  }
-  return true;
-});
+const controller = new AccessibilityController();
+
+if (typeof chrome !== 'undefined' && chrome?.runtime?.onMessage) {
+  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    if (request.action === 'getPageInfo') {
+      sendResponse({
+        title: document.title,
+        url: window.location.href,
+      });
+      return true;
+    }
+
+    if (request.action === 'processImages') {
+      controller.processImages().then(count => {
+        sendResponse({ processed: count });
+      });
+      return true;
+    }
+
+    return true;
+  });
+}
+
+module.exports = {
+  AccessibilityController,
+  controller,
+};

@@ -1,301 +1,318 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AutoAccess - Making the Web Accessible</title>
     <style>
-        :root {
-            --primary: #4CAF50;
-            --primary-dark: #388E3C;
-            --secondary: #2196F3;
-            --text: #333;
-            --light: #f5f5f5;
-        }
+      :root {
+        --primary: #4caf50;
+        --primary-dark: #388e3c;
+        --secondary: #2196f3;
+        --text: #333;
+        --light: #f5f5f5;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-        }
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+      }
 
-        .header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
+      .header {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 2rem;
+        text-align: center;
+      }
 
-        .nav {
-            background: white;
-            padding: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
+      .nav {
+        background: white;
+        padding: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
 
-        .nav-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      .nav-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary);
+      }
 
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            margin-left: 2rem;
-            transition: color 0.3s;
-        }
+      .nav-links a {
+        color: var(--text);
+        text-decoration: none;
+        margin-left: 2rem;
+        transition: color 0.3s;
+      }
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
+      .nav-links a:hover {
+        color: var(--primary);
+      }
 
-        .hero {
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            background: var(--light);
+      .hero {
+        padding: 8rem 2rem 4rem;
+        text-align: center;
+        background: var(--light);
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto 2rem;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background 0.3s;
+      }
+
+      .cta-button:hover {
+        background: var(--primary-dark);
+      }
+
+      .features {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .feature-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .feature-icon {
+        font-size: 2rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      .pricing {
+        background: var(--light);
+        padding: 4rem 2rem;
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 2rem auto 0;
+      }
+
+      .pricing-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .price {
+        font-size: 2rem;
+        color: var(--primary);
+        margin: 1rem 0;
+      }
+
+      .testimonials {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .testimonial-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .footer {
+        background: var(--text);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+          font-size: 2rem;
         }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--primary);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        .cta-button:hover {
-            background: var(--primary-dark);
-        }
-
-        .features {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .pricing {
-            background: var(--light);
-            padding: 4rem 2rem;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 2rem auto 0;
-        }
-
-        .pricing-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .price {
-            font-size: 2rem;
-            color: var(--primary);
-            margin: 1rem 0;
-        }
-
-        .testimonials {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .testimonial-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .footer {
-            background: var(--text);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="nav">
-        <div class="nav-content">
-            <div class="logo">AutoAccess</div>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#pricing">Pricing</a>
-                <a href="#testimonials">Testimonials</a>
-                <a href="#contact">Contact</a>
-            </div>
+      <div class="nav-content">
+        <div class="logo">AutoAccess</div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#testimonials">Testimonials</a>
+          <a href="#contact">Contact</a>
         </div>
+      </div>
     </nav>
 
     <header class="header">
-        <div class="hero">
-            <h1>Making the Web Accessible in One Click</h1>
-            <p>AutoAccess automatically makes websites more accessible for people with disabilities using AI-powered features.</p>
-            <a href="#pricing" class="cta-button">Get Started</a>
-        </div>
+      <div class="hero">
+        <h1>Making the Web Accessible in One Click</h1>
+        <p>
+          AutoAccess automatically makes websites more accessible for people with disabilities using
+          AI-powered features.
+        </p>
+        <a href="#pricing" class="cta-button">Get Started</a>
+      </div>
     </header>
 
     <section id="features" class="features">
-        <h2>Features</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🖼️</div>
-                <h3>AI Image Labeling</h3>
-                <p>Automatically adds descriptions to images for screen readers using Azure Computer Vision.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎨</div>
-                <h3>Color Contrast</h3>
-                <p>Improves text contrast to meet WCAG 2.1 standards while maintaining design aesthetics.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎤</div>
-                <h3>Voice Navigation</h3>
-                <p>Control websites using voice commands in multiple languages.</p>
-            </div>
+      <h2>Features</h2>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🖼️</div>
+          <h3>AI Image Labeling</h3>
+          <p>
+            Automatically adds descriptions to images for screen readers using Azure Computer
+            Vision.
+          </p>
         </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>Color Contrast</h3>
+          <p>
+            Improves text contrast to meet WCAG 2.1 standards while maintaining design aesthetics.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎤</div>
+          <h3>Voice Navigation</h3>
+          <p>Control websites using voice commands in multiple languages.</p>
+        </div>
+      </div>
     </section>
 
     <section id="pricing" class="pricing">
-        <h2>Pricing</h2>
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>Free</h3>
-                <div class="price">$0</div>
-                <ul>
-                    <li>Basic image labeling</li>
-                    <li>Standard color contrast</li>
-                    <li>Limited voice commands</li>
-                    <li>Community support</li>
-                </ul>
-                <a href="#" class="cta-button">Get Started</a>
-            </div>
-            <div class="pricing-card">
-                <h3>Monthly</h3>
-                <div class="price">$9.99</div>
-                <ul>
-                    <li>Advanced image labeling</li>
-                    <li>Custom color schemes</li>
-                    <li>Unlimited voice commands</li>
-                    <li>Priority support</li>
-                </ul>
-                <a href="#" class="cta-button">Subscribe</a>
-            </div>
-            <div class="pricing-card">
-                <h3>Yearly</h3>
-                <div class="price">$99.99</div>
-                <ul>
-                    <li>All monthly features</li>
-                    <li>2 months free</li>
-                    <li>Early access to new features</li>
-                    <li>Dedicated support</li>
-                </ul>
-                <a href="#" class="cta-button">Subscribe</a>
-            </div>
+      <h2>Pricing</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Free</h3>
+          <div class="price">$0</div>
+          <ul>
+            <li>Basic image labeling</li>
+            <li>Standard color contrast</li>
+            <li>Limited voice commands</li>
+            <li>Community support</li>
+          </ul>
+          <a href="#" class="cta-button">Get Started</a>
         </div>
+        <div class="pricing-card">
+          <h3>Monthly</h3>
+          <div class="price">$9.99</div>
+          <ul>
+            <li>Advanced image labeling</li>
+            <li>Custom color schemes</li>
+            <li>Unlimited voice commands</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#" class="cta-button">Subscribe</a>
+        </div>
+        <div class="pricing-card">
+          <h3>Yearly</h3>
+          <div class="price">$99.99</div>
+          <ul>
+            <li>All monthly features</li>
+            <li>2 months free</li>
+            <li>Early access to new features</li>
+            <li>Dedicated support</li>
+          </ul>
+          <a href="#" class="cta-button">Subscribe</a>
+        </div>
+      </div>
     </section>
 
     <section id="testimonials" class="testimonials">
-        <h2>What Our Users Say</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <p>"AutoAccess has made my daily web browsing so much easier. The voice commands are a game-changer!"</p>
-                <cite>- Sarah M., Visual Impairment</cite>
-            </div>
-            <div class="testimonial-card">
-                <p>"As a web developer, I love how AutoAccess helps make my sites more accessible without extra work."</p>
-                <cite>- John D., Web Developer</cite>
-            </div>
-            <div class="testimonial-card">
-                <p>"The color contrast feature is amazing. I can finally read all websites without straining my eyes."</p>
-                <cite>- Michael R., Low Vision</cite>
-            </div>
+      <h2>What Our Users Say</h2>
+      <div class="testimonial-grid">
+        <div class="testimonial-card">
+          <p>
+            "AutoAccess has made my daily web browsing so much easier. The voice commands are a
+            game-changer!"
+          </p>
+          <cite>- Sarah M., Visual Impairment</cite>
         </div>
+        <div class="testimonial-card">
+          <p>
+            "As a web developer, I love how AutoAccess helps make my sites more accessible without
+            extra work."
+          </p>
+          <cite>- John D., Web Developer</cite>
+        </div>
+        <div class="testimonial-card">
+          <p>
+            "The color contrast feature is amazing. I can finally read all websites without
+            straining my eyes."
+          </p>
+          <cite>- Michael R., Low Vision</cite>
+        </div>
+      </div>
     </section>
 
     <footer class="footer">
-        <p>&copy; 2024 AutoAccess. All rights reserved.</p>
-        <p>Making the web accessible for everyone.</p>
+      <p>&copy; 2024 AutoAccess. All rights reserved.</p>
+      <p>Making the web accessible for everyone.</p>
     </footer>
-</body>
-</html> 
+  </body>
+</html>

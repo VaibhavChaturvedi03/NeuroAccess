@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './styles/options.css';
 
 const Options = () => {
@@ -13,4 +13,9 @@ const Options = () => {
   );
 };
 
-ReactDOM.render(<Options />, document.getElementById('root'));
+const rootElement = document.getElementById('root');
+
+if (rootElement) {
+  const root = createRoot(rootElement);
+  root.render(<Options />);
+}

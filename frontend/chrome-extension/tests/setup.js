@@ -18,21 +18,9 @@ global.chrome = {
   },
 };
 
-// Mock window.speechRecognition
-global.window = {
-  SpeechRecognition: jest.fn(),
-  webkitSpeechRecognition: jest.fn(),
-};
-
-// Mock document
-global.document = {
-  createElement: jest.fn(),
-  querySelector: jest.fn(),
-  querySelectorAll: jest.fn(),
-  body: {
-    appendChild: jest.fn(),
-  },
-};
+// Mock speech recognition APIs on top of jsdom window
+global.SpeechRecognition = jest.fn();
+global.webkitSpeechRecognition = jest.fn();
 
 // Mock console
 global.console = {
@@ -99,7 +87,9 @@ global.Image = jest.fn();
 global.Audio = jest.fn();
 
 // Mock Canvas
-global.HTMLCanvasElement.prototype.getContext = jest.fn();
+if (global.HTMLCanvasElement && global.HTMLCanvasElement.prototype) {
+  global.HTMLCanvasElement.prototype.getContext = jest.fn();
+}
 
 // Mock requestAnimationFrame
 global.requestAnimationFrame = jest.fn(callback => setTimeout(callback, 0));

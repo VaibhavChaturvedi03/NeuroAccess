@@ -1,249 +1,257 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pricing - AutoAccess</title>
     <style>
-        :root {
-            --primary-color: #2196F3;
-            --secondary-color: #1976D2;
-            --text-color: #333;
-            --background-color: #f5f5f5;
-            --card-background: #ffffff;
-        }
+      :root {
+        --primary-color: #2196f3;
+        --secondary-color: #1976d2;
+        --text-color: #333;
+        --background-color: #f5f5f5;
+        --card-background: #ffffff;
+      }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
 
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
+      header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
 
-        h1 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
+      h1 {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+      .subtitle {
+        font-size: 1.2rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+      }
 
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .pricing-card {
+        background: var(--card-background);
+        border-radius: 10px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .pricing-card.popular {
+        border: 2px solid var(--primary-color);
+        position: relative;
+      }
+
+      .popular-badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary-color);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+      }
+
+      .plan-name {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .price {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      .price-period {
+        font-size: 1rem;
+        color: #666;
+      }
+
+      .features {
+        list-style: none;
+        padding: 0;
+        margin: 2rem 0;
+      }
+
+      .features li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+      }
+
+      .features li:last-child {
+        border-bottom: none;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 0.8rem 2rem;
+        background-color: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .button:hover {
+        background-color: var(--secondary-color);
+      }
+
+      .faq {
+        margin-top: 4rem;
+      }
+
+      .faq h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .faq-item {
+        background: var(--card-background);
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .faq-question {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+      }
+
+      .faq-answer {
+        color: #666;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 768px) {
         .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+          grid-template-columns: 1fr;
         }
-
-        .pricing-card {
-            background: var(--card-background);
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .pricing-card.popular {
-            border: 2px solid var(--primary-color);
-            position: relative;
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        .plan-name {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .price-period {
-            font-size: 1rem;
-            color: #666;
-        }
-
-        .features {
-            list-style: none;
-            padding: 0;
-            margin: 2rem 0;
-        }
-
-        .features li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid #eee;
-        }
-
-        .features li:last-child {
-            border-bottom: none;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .button:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .faq {
-            margin-top: 4rem;
-        }
-
-        .faq h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .faq-item {
-            background: var(--card-background);
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-        }
-
-        .faq-question {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: var(--primary-color);
-        }
-
-        .faq-answer {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        @media (max-width: 768px) {
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <h1>Choose Your Plan</h1>
-            <p class="subtitle">Select the perfect plan to enhance your web accessibility experience</p>
-        </header>
+      <header>
+        <h1>Choose Your Plan</h1>
+        <p class="subtitle">Select the perfect plan to enhance your web accessibility experience</p>
+      </header>
 
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <div class="plan-name">Free</div>
-                <div class="price">$0</div>
-                <div class="price-period">forever</div>
-                <ul class="features">
-                    <li>Basic image labeling</li>
-                    <li>Standard color contrast</li>
-                    <li>Limited voice commands</li>
-                    <li>Community support</li>
-                </ul>
-                <a href="#" class="button">Get Started</a>
-            </div>
-
-            <div class="pricing-card popular">
-                <div class="popular-badge">Most Popular</div>
-                <div class="plan-name">Monthly</div>
-                <div class="price">$9.99</div>
-                <div class="price-period">per month</div>
-                <ul class="features">
-                    <li>Advanced image labeling</li>
-                    <li>Custom color schemes</li>
-                    <li>Unlimited voice commands</li>
-                    <li>Priority support</li>
-                    <li>Ad-free experience</li>
-                </ul>
-                <a href="#" class="button">Subscribe Now</a>
-            </div>
-
-            <div class="pricing-card">
-                <div class="plan-name">Yearly</div>
-                <div class="price">$99.99</div>
-                <div class="price-period">per year</div>
-                <ul class="features">
-                    <li>All Monthly features</li>
-                    <li>Early access to new features</li>
-                    <li>2 months free</li>
-                    <li>Dedicated support</li>
-                    <li>Custom integrations</li>
-                </ul>
-                <a href="#" class="button">Save 17%</a>
-            </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="plan-name">Free</div>
+          <div class="price">$0</div>
+          <div class="price-period">forever</div>
+          <ul class="features">
+            <li>Basic image labeling</li>
+            <li>Standard color contrast</li>
+            <li>Limited voice commands</li>
+            <li>Community support</li>
+          </ul>
+          <a href="#" class="button">Get Started</a>
         </div>
 
-        <div class="faq">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-item">
-                <div class="faq-question">Can I switch plans later?</div>
-                <div class="faq-answer">Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">Is there a refund policy?</div>
-                <div class="faq-answer">We offer a 30-day money-back guarantee for all paid plans. If you're not satisfied, we'll refund your payment.</div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question">What payment methods do you accept?</div>
-                <div class="faq-answer">We accept all major credit cards, PayPal, and other popular payment methods.</div>
-            </div>
+        <div class="pricing-card popular">
+          <div class="popular-badge">Most Popular</div>
+          <div class="plan-name">Monthly</div>
+          <div class="price">$9.99</div>
+          <div class="price-period">per month</div>
+          <ul class="features">
+            <li>Advanced image labeling</li>
+            <li>Custom color schemes</li>
+            <li>Unlimited voice commands</li>
+            <li>Priority support</li>
+            <li>Ad-free experience</li>
+          </ul>
+          <a href="#" class="button">Subscribe Now</a>
         </div>
+
+        <div class="pricing-card">
+          <div class="plan-name">Yearly</div>
+          <div class="price">$99.99</div>
+          <div class="price-period">per year</div>
+          <ul class="features">
+            <li>All Monthly features</li>
+            <li>Early access to new features</li>
+            <li>2 months free</li>
+            <li>Dedicated support</li>
+            <li>Custom integrations</li>
+          </ul>
+          <a href="#" class="button">Save 17%</a>
+        </div>
+      </div>
+
+      <div class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+          <div class="faq-question">Can I switch plans later?</div>
+          <div class="faq-answer">
+            Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in
+            your next billing cycle.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Is there a refund policy?</div>
+          <div class="faq-answer">
+            We offer a 30-day money-back guarantee for all paid plans. If you're not satisfied,
+            we'll refund your payment.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">What payment methods do you accept?</div>
+          <div class="faq-answer">
+            We accept all major credit cards, PayPal, and other popular payment methods.
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
-        document.querySelectorAll('.button').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const plan = e.target.closest('.pricing-card').querySelector('.plan-name').textContent;
-                chrome.runtime.sendMessage({
-                    action: 'subscribe',
-                    plan: plan.toLowerCase()
-                });
-            });
+      document.querySelectorAll('.button').forEach(button => {
+        button.addEventListener('click', e => {
+          e.preventDefault();
+          const plan = e.target.closest('.pricing-card').querySelector('.plan-name').textContent;
+          chrome.runtime.sendMessage({
+            action: 'subscribe',
+            plan: plan.toLowerCase(),
+          });
         });
+      });
     </script>
-</body>
-</html> 
+  </body>
+</html>

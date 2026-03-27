@@ -1,13 +1,31 @@
 # Frontend Chrome Extension Workspace
 
-Use this folder for all new frontend extension development.
+Use this folder for all frontend extension development.
 
 ## Suggested internal layout
+
 - src/
 - public/
 - tests/
 - assets/
 
-## Current status
-The legacy build still runs from repository root.
-This folder is prepared for clean team-based migration.
+## Source of truth
+
+- App source code: `src/`
+- Tests: `tests/`
+- Build output to load in Chrome: `dist/`
+
+Legacy duplicate root-level app files were removed to keep one clean pipeline.
+
+## Run locally
+
+1. `npm ci`
+2. `npm test`
+3. `npm run build`
+
+## Load in Chrome
+
+1. Open `chrome://extensions`
+2. Enable Developer mode
+3. Click **Load unpacked**
+4. Select this folder: `frontend/chrome-extension/dist`

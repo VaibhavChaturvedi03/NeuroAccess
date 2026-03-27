@@ -7,7 +7,7 @@
     "build": "webpack --mode production",
     "dev": "webpack --mode development --watch",
     "test": "jest",
-    "lint": "eslint src tests --ext .js",
+    "lint": "eslint --config .eslintrc.json --resolve-plugins-relative-to . src tests --ext .js",
     "format": "prettier --write ."
   },
   "keywords": [

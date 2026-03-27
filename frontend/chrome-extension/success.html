@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Success - AutoAccess</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f5faf8;
+        color: #1f2937;
+      }
+      .card {
+        width: min(90vw, 520px);
+        background: #ffffff;
+        border: 1px solid #d1fae5;
+        border-radius: 12px;
+        padding: 28px;
+        text-align: center;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      }
+      h1 {
+        margin-top: 0;
+        color: #047857;
+      }
+      a {
+        color: #065f46;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <h1>Payment Successful</h1>
+      <p>Your AutoAccess subscription is active.</p>
+      <p>You can close this tab and return to the extension.</p>
+      <p>
+        <a
+          href="#"
+          onclick="
+            window.close();
+            return false;
+          "
+          >Close tab</a
+        >
+      </p>
+    </main>
+  </body>
+</html>

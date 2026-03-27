@@ -1,46 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
+  <head>
     <title>SVG to PNG Converter</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-        .preview {
-            margin: 20px 0;
-            padding: 20px;
-            border: 1px solid #ccc;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 5px;
-            cursor: pointer;
-        }
-        canvas {
-            border: 1px solid #eee;
-            margin: 10px;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+      }
+      .preview {
+        margin: 20px 0;
+        padding: 20px;
+        border: 1px solid #ccc;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+      }
+      canvas {
+        border: 1px solid #eee;
+        margin: 10px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>SVG to PNG Converter</h1>
     <div id="svgContainer"></div>
     <div class="preview">
-        <h2>Preview</h2>
-        <div id="previewContainer"></div>
+      <h2>Preview</h2>
+      <div id="previewContainer"></div>
     </div>
     <div>
-        <button onclick="convertToPNG(16)">Generate 16x16</button>
-        <button onclick="convertToPNG(48)">Generate 48x48</button>
-        <button onclick="convertToPNG(128)">Generate 128x128</button>
+      <button onclick="convertToPNG(16)">Generate 16x16</button>
+      <button onclick="convertToPNG(48)">Generate 48x48</button>
+      <button onclick="convertToPNG(128)">Generate 128x128</button>
     </div>
 
     <script>
-        // SVG content
-        const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
+      // SVG content
+      const svgContent = `<?xml version="1.0" encoding="UTF-8"?>
 <svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
   <!-- Background circle -->
   <circle cx="64" cy="64" r="60" fill="#2196F3"/>
@@ -59,47 +59,47 @@
   </g>
 </svg>`;
 
-        // Display SVG
-        document.getElementById('svgContainer').innerHTML = svgContent;
+      // Display SVG
+      document.getElementById('svgContainer').innerHTML = svgContent;
 
-        function convertToPNG(size) {
-            // Create canvas
-            const canvas = document.createElement('canvas');
-            canvas.width = size;
-            canvas.height = size;
-            const ctx = canvas.getContext('2d');
+      function convertToPNG(size) {
+        // Create canvas
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
 
-            // Create image from SVG
-            const img = new Image();
-            const svgBlob = new Blob([svgContent], {type: 'image/svg+xml'});
-            const url = URL.createObjectURL(svgBlob);
+        // Create image from SVG
+        const img = new Image();
+        const svgBlob = new Blob([svgContent], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(svgBlob);
 
-            img.onload = function() {
-                // Draw image on canvas
-                ctx.drawImage(img, 0, 0, size, size);
-                
-                // Convert to PNG
-                const pngUrl = canvas.toDataURL('image/png');
-                
-                // Create download link
-                const link = document.createElement('a');
-                link.download = `icon${size}.png`;
-                link.href = pngUrl;
-                link.click();
+        img.onload = function () {
+          // Draw image on canvas
+          ctx.drawImage(img, 0, 0, size, size);
 
-                // Clean up
-                URL.revokeObjectURL(url);
-            };
+          // Convert to PNG
+          const pngUrl = canvas.toDataURL('image/png');
 
-            img.src = url;
+          // Create download link
+          const link = document.createElement('a');
+          link.download = `icon${size}.png`;
+          link.href = pngUrl;
+          link.click();
 
-            // Add preview
-            const previewContainer = document.getElementById('previewContainer');
-            const preview = document.createElement('div');
-            preview.innerHTML = `<h3>${size}x${size} Preview</h3>`;
-            preview.appendChild(canvas);
-            previewContainer.appendChild(preview);
-        }
+          // Clean up
+          URL.revokeObjectURL(url);
+        };
+
+        img.src = url;
+
+        // Add preview
+        const previewContainer = document.getElementById('previewContainer');
+        const preview = document.createElement('div');
+        preview.innerHTML = `<h3>${size}x${size} Preview</h3>`;
+        preview.appendChild(canvas);
+        previewContainer.appendChild(preview);
+      }
     </script>
-</body>
-</html> 
+  </body>
+</html>

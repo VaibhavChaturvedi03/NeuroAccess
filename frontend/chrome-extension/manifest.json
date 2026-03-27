@@ -3,15 +3,8 @@
   "name": "AutoAccess",
   "version": "1.0.0",
   "description": "Making the web accessible for everyone with AI-powered features",
-  "permissions": [
-    "storage",
-    "activeTab",
-    "scripting",
-    "tabs"
-  ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
+  "permissions": ["storage", "activeTab", "scripting", "tabs"],
+  "host_permissions": ["<all_urls>"],
   "action": {
     "default_popup": "popup.html"
   },
@@ -34,15 +27,11 @@
   "options_page": "options.html",
   "web_accessible_resources": [
     {
-      "resources": [
-        "success.html",
-        "cancel.html",
-        "pricing.html"
-      ],
+      "resources": ["success.html", "cancel.html", "pricing.html"],
       "matches": ["<all_urls>"]
     }
   ],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'; media-src 'self' https://*.azure.com"
   }
-} 
+}
