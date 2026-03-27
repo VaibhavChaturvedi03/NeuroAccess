@@ -1,0 +1,28 @@
+{
+  "name": "neuroaccess-backend-api",
+  "version": "1.0.0",
+  "description": "This folder contains the backend scaffold for NeuroAccess.",
+  "main": "src/index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": [],
+  "author": "vaibhav",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.3.1",
+    "helmet": "^8.1.0",
+    "mongoose": "^8.19.2",
+    "morgan": "^1.10.1",
+    "zod": "^4.3.6"
+  }
+}
