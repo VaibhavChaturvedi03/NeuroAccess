@@ -3,25 +3,25 @@ global.chrome = {
   storage: {
     sync: {
       get: jest.fn(),
-      set: jest.fn()
-    }
+      set: jest.fn(),
+    },
   },
   runtime: {
     sendMessage: jest.fn(),
     onMessage: {
-      addListener: jest.fn()
-    }
+      addListener: jest.fn(),
+    },
   },
   tabs: {
     query: jest.fn(),
-    sendMessage: jest.fn()
-    }
+    sendMessage: jest.fn(),
+  },
 };
 
 // Mock window.speechRecognition
 global.window = {
   SpeechRecognition: jest.fn(),
-  webkitSpeechRecognition: jest.fn()
+  webkitSpeechRecognition: jest.fn(),
 };
 
 // Mock document
@@ -30,15 +30,15 @@ global.document = {
   querySelector: jest.fn(),
   querySelectorAll: jest.fn(),
   body: {
-    appendChild: jest.fn()
-  }
+    appendChild: jest.fn(),
+  },
 };
 
 // Mock console
 global.console = {
   log: jest.fn(),
   error: jest.fn(),
-  warn: jest.fn()
+  warn: jest.fn(),
 };
 
 // Mock fetch
@@ -48,14 +48,14 @@ global.fetch = jest.fn();
 global.ResizeObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
   unobserve: jest.fn(),
-  disconnect: jest.fn()
+  disconnect: jest.fn(),
 }));
 
 // Mock IntersectionObserver
 global.IntersectionObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
   unobserve: jest.fn(),
-  disconnect: jest.fn()
+  disconnect: jest.fn(),
 }));
 
 // Mock matchMedia
@@ -67,14 +67,14 @@ global.matchMedia = jest.fn().mockImplementation(query => ({
   removeListener: jest.fn(),
   addEventListener: jest.fn(),
   removeEventListener: jest.fn(),
-  dispatchEvent: jest.fn()
+  dispatchEvent: jest.fn(),
 }));
 
 // Mock localStorage
 const localStorageMock = {
   getItem: jest.fn(),
   setItem: jest.fn(),
-  clear: jest.fn()
+  clear: jest.fn(),
 };
 global.localStorage = localStorageMock;
 
@@ -82,14 +82,14 @@ global.localStorage = localStorageMock;
 const sessionStorageMock = {
   getItem: jest.fn(),
   setItem: jest.fn(),
-  clear: jest.fn()
+  clear: jest.fn(),
 };
 global.sessionStorage = sessionStorageMock;
 
 // Mock URL
 global.URL = {
   createObjectURL: jest.fn(),
-  revokeObjectURL: jest.fn()
+  revokeObjectURL: jest.fn(),
 };
 
 // Mock Image
@@ -107,16 +107,16 @@ global.cancelAnimationFrame = jest.fn();
 
 // Mock performance
 global.performance = {
-  now: jest.fn()
+  now: jest.fn(),
 };
 
 // Mock crypto
 global.crypto = {
-  getRandomValues: jest.fn()
+  getRandomValues: jest.fn(),
 };
 
 // Mock MutationObserver
 global.MutationObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
-  disconnect: jest.fn()
-})); 
+  disconnect: jest.fn(),
+}));

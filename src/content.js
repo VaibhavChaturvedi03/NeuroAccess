@@ -13,4 +13,4 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     sendResponse(pageInfo);
   }
   return true;
-}); 
+});

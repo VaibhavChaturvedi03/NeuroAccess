@@ -2,7 +2,7 @@
 console.log('AutoAccess background script loaded');
 
 // Listen for installation
-chrome.runtime.onInstalled.addListener((details) => {
+chrome.runtime.onInstalled.addListener(details => {
   if (details.reason === 'install') {
     // First time installation
     console.log('AutoAccess installed');
@@ -23,4 +23,4 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     sendResponse(extensionInfo);
   }
   return true;
-}); 
+});

@@ -9,20 +9,20 @@ describe('AccessibilityController', () => {
       querySelectorAll: jest.fn(),
       createElement: jest.fn(),
       body: {
-        appendChild: jest.fn()
-      }
+        appendChild: jest.fn(),
+      },
     };
 
     global.chrome = {
       storage: {
         sync: {
           get: jest.fn(),
-          set: jest.fn()
-        }
+          set: jest.fn(),
+        },
       },
       runtime: {
-        sendMessage: jest.fn()
-      }
+        sendMessage: jest.fn(),
+      },
     };
 
     controller = new AccessibilityController();
@@ -33,7 +33,7 @@ describe('AccessibilityController', () => {
       const mockImage = {
         alt: '',
         src: 'test.jpg',
-        setAttribute: jest.fn()
+        setAttribute: jest.fn(),
       };
 
       mockDocument.querySelectorAll.mockReturnValue([mockImage]);
@@ -47,7 +47,7 @@ describe('AccessibilityController', () => {
       const mockImage = {
         alt: 'Existing alt text',
         src: 'test.jpg',
-        setAttribute: jest.fn()
+        setAttribute: jest.fn(),
       };
 
       mockDocument.querySelectorAll.mockReturnValue([mockImage]);
@@ -63,8 +63,8 @@ describe('AccessibilityController', () => {
       const mockElement = {
         style: {
           color: 'rgb(200, 200, 200)',
-          backgroundColor: 'rgb(255, 255, 255)'
-        }
+          backgroundColor: 'rgb(255, 255, 255)',
+        },
       };
 
       mockDocument.querySelectorAll.mockReturnValue([mockElement]);
@@ -78,8 +78,8 @@ describe('AccessibilityController', () => {
       const mockElement = {
         style: {
           color: 'rgb(0, 0, 0)',
-          backgroundColor: 'rgb(255, 255, 255)'
-        }
+          backgroundColor: 'rgb(255, 255, 255)',
+        },
       };
 
       mockDocument.querySelectorAll.mockReturnValue([mockElement]);
@@ -93,7 +93,7 @@ describe('AccessibilityController', () => {
   describe('handleVoiceCommand', () => {
     it('should handle scroll commands', () => {
       const mockWindow = {
-        scrollBy: jest.fn()
+        scrollBy: jest.fn(),
       };
 
       global.window = mockWindow;
@@ -107,9 +107,9 @@ describe('AccessibilityController', () => {
       const mockDocument = {
         body: {
           style: {
-            zoom: '1'
-          }
-        }
+            zoom: '1',
+          },
+        },
       };
 
       global.document = mockDocument;
@@ -121,7 +121,7 @@ describe('AccessibilityController', () => {
 
     it('should handle navigation commands', () => {
       const mockLink = {
-        click: jest.fn()
+        click: jest.fn(),
       };
 
       mockDocument.querySelector.mockReturnValue(mockLink);
@@ -137,7 +137,7 @@ describe('AccessibilityController', () => {
       const mockSettings = {
         imageLabelingEnabled: true,
         colorContrastEnabled: true,
-        voiceNavEnabled: true
+        voiceNavEnabled: true,
       };
 
       chrome.storage.sync.get.mockResolvedValue({ settings: mockSettings });
@@ -155,4 +155,4 @@ describe('AccessibilityController', () => {
       expect(controller.settings).toEqual(controller.defaultSettings);
     });
   });
-}); 
+});
