@@ -1,8 +1,8 @@
-# AutoAccess API Documentation
+# NeuroAccess API Documentation
 
 ## Overview
 
-AutoAccess provides a comprehensive API for enhancing web accessibility through AI-powered features. This documentation covers the main components and their usage.
+NeuroAccess provides a comprehensive API for enhancing web accessibility through AI-powered features. This documentation covers the main components and their usage.
 
 ## Core Components
 
@@ -242,4 +242,4 @@ try {
 For support, please:
 1. Check the documentation
 2. Open an issue on GitHub
-3. Contact support@autoaccess.com 
+3. Contact support@neuroaccess.com 

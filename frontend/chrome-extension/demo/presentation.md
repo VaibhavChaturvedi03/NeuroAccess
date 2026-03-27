@@ -1,8 +1,8 @@
-# AutoAccess - Making the Web Accessible in One Click
+# NeuroAccess - Making the Web Accessible in One Click
 
 ## Introduction (1 minute)
 
-"Hi everyone! Today I'm presenting AutoAccess, a Chrome extension that makes the web accessible to everyone with just one click. Did you know that 1.3 billion people worldwide live with some form of disability? Many of them struggle to access websites due to common accessibility issues."
+"Hi everyone! Today I'm presenting NeuroAccess, a Chrome extension that makes the web accessible to everyone with just one click. Did you know that 1.3 billion people worldwide live with some form of disability? Many of them struggle to access websites due to common accessibility issues."
 
 ## The Problem (2 minutes)
 
@@ -17,7 +17,7 @@
 
 ## Our Solution (3 minutes)
 
-"AutoAccess solves these issues with three powerful features:"
+"NeuroAccess solves these issues with three powerful features:"
 
 1. **AI Image Labeling**
    - Click extension icon
@@ -40,7 +40,7 @@
 
 ## Technical Innovation (2 minutes)
 
-"Here's what makes AutoAccess special:"
+"Here's what makes NeuroAccess special:"
 
 - Azure Computer Vision AI for accurate image descriptions
 - WCAG 2.1 compliance for color contrast
@@ -49,7 +49,7 @@
 
 ## Impact (1 minute)
 
-"AutoAccess can help:"
+"NeuroAccess can help:"
 
 - 1.3 billion people with disabilities
 - Website owners meet accessibility standards
@@ -76,7 +76,7 @@
 
 ## Q&A (2 minutes)
 
-"Thank you! I'm happy to answer any questions about AutoAccess."
+"Thank you! I'm happy to answer any questions about NeuroAccess."
 
 ## Key Points to Remember
 

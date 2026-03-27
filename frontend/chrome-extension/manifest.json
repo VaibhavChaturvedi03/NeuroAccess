@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "AutoAccess",
+  "name": "NeuroAccess",
   "version": "1.0.0",
   "description": "Making the web accessible for everyone with AI-powered features",
   "permissions": ["storage", "activeTab", "scripting", "tabs"],

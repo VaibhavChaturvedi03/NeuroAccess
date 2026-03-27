@@ -14,7 +14,7 @@ class AccessibilityController {
 
     unlabeled.forEach(img => {
       const srcHint = img.src ? img.src.split('/').pop() : 'image';
-      img.setAttribute('alt', `AutoAccess generated description for ${srcHint || 'image'}`);
+      img.setAttribute('alt', `NeuroAccess generated description for ${srcHint || 'image'}`);
     });
 
     return unlabeled.length;

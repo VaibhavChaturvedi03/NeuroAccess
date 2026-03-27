@@ -11,11 +11,11 @@ We release patches for security vulnerabilities. Here are the versions that are 
 
 ## Reporting a Vulnerability
 
-We take the security of AutoAccess seriously. If you believe you have found a security vulnerability, please report it to us as described below.
+We take the security of NeuroAccess seriously. If you believe you have found a security vulnerability, please report it to us as described below.
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-Instead, please report them via email to security@autoaccess.com.
+Instead, please report them via email to security@neuroaccess.com.
 
 You should receive a response within 48 hours. If for some reason you do not, please follow up via email to ensure we received your original message.
 
@@ -154,16 +154,16 @@ Our security team consists of:
 ## Security Contacts
 
 ### Primary Contact
-- Email: security@autoaccess.com
+- Email: security@neuroaccess.com
 - PGP Key: [Key]
 
 ### Backup Contact
-- Email: security-backup@autoaccess.com
+- Email: security-backup@neuroaccess.com
 - PGP Key: [Key]
 
 ## Security Acknowledgments
 
-We would like to thank all security researchers who have responsibly reported security vulnerabilities to us. Their efforts help make AutoAccess more secure for everyone.
+We would like to thank all security researchers who have responsibly reported security vulnerabilities to us. Their efforts help make NeuroAccess more secure for everyone.
 
 ## Security Updates
 

@@ -5,9 +5,9 @@ import './styles/popup.css';
 const Popup = () => {
   return (
     <div className="popup">
-      <h1>AutoAccess</h1>
+      <h1>NeuroAccess</h1>
       <div className="content">
-        <p>Welcome to AutoAccess!</p>
+        <p>Welcome to NeuroAccess!</p>
       </div>
     </div>
   );

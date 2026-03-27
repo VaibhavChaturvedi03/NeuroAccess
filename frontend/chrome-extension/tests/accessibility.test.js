@@ -34,7 +34,7 @@ describe('AccessibilityController', () => {
 
       await controller.processImages();
 
-      expect(image.getAttribute('alt')).toContain('AutoAccess generated description');
+      expect(image.getAttribute('alt')).toContain('NeuroAccess generated description');
     });
 
     it('should not modify images with existing alt text', async () => {

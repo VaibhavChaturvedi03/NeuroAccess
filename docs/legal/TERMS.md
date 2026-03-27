@@ -1,14 +1,14 @@
-# AutoAccess Terms of Service
+# NeuroAccess Terms of Service
 
 Last updated: March 2024
 
 ## 1. Acceptance of Terms
 
-By installing and using AutoAccess ("the Extension"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the Extension.
+By installing and using NeuroAccess ("the Extension"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the Extension.
 
 ## 2. Description of Service
 
-AutoAccess is a browser extension that enhances web accessibility through:
+NeuroAccess is a browser extension that enhances web accessibility through:
 - AI-powered image labeling
 - Color contrast adjustment
 - Voice navigation
@@ -196,14 +196,14 @@ AutoAccess is a browser extension that enhances web accessibility through:
 ## 20. Contact Information
 
 For questions about these Terms:
-- Email: legal@autoaccess.com
+- Email: legal@neuroaccess.com
 - Address: [Your Company Address]
 - Phone: [Your Phone Number]
 
 ## 21. Definitions
 
 ### Key Terms
-- "Extension" means AutoAccess
+- "Extension" means NeuroAccess
 - "User" means any person using the Extension
 - "Content" means any material processed by the Extension
 - "Service" means all features and functionality

@@ -1,14 +1,14 @@
 // Background script that runs in the extension's background context
-console.log('AutoAccess background script loaded');
+console.log('NeuroAccess background script loaded');
 
 // Listen for installation
 chrome.runtime.onInstalled.addListener(details => {
   if (details.reason === 'install') {
     // First time installation
-    console.log('AutoAccess installed');
+    console.log('NeuroAccess installed');
   } else if (details.reason === 'update') {
     // Extension updated
-    console.log('AutoAccess updated');
+    console.log('NeuroAccess updated');
   }
 });
 

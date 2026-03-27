@@ -1,10 +1,10 @@
-# AutoAccess Privacy Policy
+# NeuroAccess Privacy Policy
 
 Last updated: March 2024
 
 ## Introduction
 
-AutoAccess ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our browser extension.
+NeuroAccess ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information when you use our browser extension.
 
 ## Information We Collect
 
@@ -132,7 +132,7 @@ AutoAccess ("we", "our", or "us") is committed to protecting your privacy. This 
 ## Contact Us
 
 For privacy concerns:
-- Email: privacy@autoaccess.com
+- Email: privacy@neuroaccess.com
 - Address: [Your Company Address]
 - Phone: [Your Phone Number]
 

@@ -1,5 +1,5 @@
 {
-  "name": "autoaccess",
+  "name": "neuroaccess",
   "version": "1.0.0",
   "description": "AI-powered browser extension for web accessibility",
   "main": "background.js",
@@ -17,7 +17,7 @@
     "chrome-extension",
     "web-accessibility"
   ],
-  "author": "AutoAccess Team",
+  "author": "NeuroAccess Team",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.23.0",

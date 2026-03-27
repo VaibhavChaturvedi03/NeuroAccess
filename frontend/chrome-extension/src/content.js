@@ -1,6 +1,6 @@
 const { AccessibilityController } = require('./accessibility-controller');
 
-console.log('AutoAccess content script loaded');
+console.log('NeuroAccess content script loaded');
 
 const controller = new AccessibilityController();
 

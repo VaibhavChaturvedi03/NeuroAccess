@@ -5,9 +5,9 @@ import './styles/options.css';
 const Options = () => {
   return (
     <div className="options">
-      <h1>AutoAccess Options</h1>
+      <h1>NeuroAccess Options</h1>
       <div className="content">
-        <p>Configure your AutoAccess settings here.</p>
+        <p>Configure your NeuroAccess settings here.</p>
       </div>
     </div>
   );

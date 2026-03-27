@@ -1,6 +1,6 @@
-# Contributing to AutoAccess
+# Contributing to NeuroAccess
 
-Thank you for your interest in contributing to AutoAccess! This document provides guidelines and instructions for contributing to the project.
+Thank you for your interest in contributing to NeuroAccess! This document provides guidelines and instructions for contributing to the project.
 
 ## Code of Conduct
 
@@ -18,7 +18,7 @@ By participating in this project, you agree to abide by our Code of Conduct. Ple
 1. Fork the repository
 2. Clone your fork:
    ```bash
-   git clone https://github.com/yourusername/autoaccess.git
+   git clone https://github.com/yourusername/neuroaccess.git
    ```
 3. Install dependencies:
    ```bash
@@ -66,15 +66,15 @@ By participating in this project, you agree to abide by our Code of Conduct. Ple
 ## Project Structure
 
 ```
-autoaccess/
-├── src/
-│   ├── popup/
-│   ├── content/
-│   ├── background/
-│   └── options/
-├── tests/
-├── docs/
-└── dist/
+neuroaccess/
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ popup/
+â”‚   â”œâ”€â”€ content/
+â”‚   â”œâ”€â”€ background/
+â”‚   â””â”€â”€ options/
+â”œâ”€â”€ tests/
+â”œâ”€â”€ docs/
+â””â”€â”€ dist/
 ```
 
 ## Coding Standards
