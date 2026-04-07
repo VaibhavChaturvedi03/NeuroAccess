@@ -3,3 +3,4 @@ Pillow
 gTTS
 groq
 python-dotenv
+gunicorn
