@@ -1,5 +1,8 @@
 const { getProviderStatus } = require('./provider-registry');
 
+const defaultAiServiceUrl = 'https://neuroaccessai.onrender.com';
+const aiServiceTimeoutMs = Number(process.env.AI_SERVICE_TIMEOUT_MS || 45000);
+
 function toHttpError(statusCode, message) {
   const error = new Error(message);
   error.statusCode = statusCode;
@@ -7,21 +10,35 @@ function toHttpError(statusCode, message) {
 }
 
 async function callLocalAi({ task, payload, requestId }) {
-  const baseUrl = process.env.AI_SERVICE_URL;
+  const baseUrl = process.env.AI_SERVICE_URL || defaultAiServiceUrl;
   const endpoint = `${baseUrl.replace(/\/$/, '')}/api/v1/process`;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), aiServiceTimeoutMs);
 
-  const response = await fetch(endpoint, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-request-id': requestId
-    },
-    body: JSON.stringify({
-      task,
-      imageBase64: payload.imageBase64,
-      text: payload.text
-    })
-  });
+  let response;
+  try {
+    response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-request-id': requestId
+      },
+      body: JSON.stringify({
+        task,
+        imageBase64: payload.imageBase64,
+        text: payload.text
+      }),
+      signal: controller.signal
+    });
+  } catch (error) {
+    if (error.name === 'AbortError') {
+      throw toHttpError(504, 'AI service timed out. Please retry.');
+    }
+
+    throw toHttpError(502, 'Unable to reach AI service. Please retry.');
+  } finally {
+    clearTimeout(timeout);
+  }
 
   const body = await response.json().catch(() => ({}));
 

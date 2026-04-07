@@ -2,7 +2,8 @@ const openAiApiKey = process.env.OPENAI_API_KEY || '';
 const huggingFaceApiKey = process.env.HUGGINGFACE_API_KEY || '';
 const assemblyAiApiKey = process.env.ASSEMBLYAI_API_KEY || '';
 const elevenLabsApiKey = process.env.ELEVENLABS_API_KEY || '';
-const aiServiceUrl = process.env.AI_SERVICE_URL || '';
+const defaultAiServiceUrl = 'https://neuroaccessai.onrender.com';
+const aiServiceUrl = process.env.AI_SERVICE_URL || defaultAiServiceUrl;
 
 const providerConfig = {
   openai: {
@@ -23,7 +24,7 @@ const providerConfig = {
   },
   localai: {
     enabled: Boolean(aiServiceUrl),
-    reason: aiServiceUrl ? '' : 'AI_SERVICE_URL is not configured'
+    reason: aiServiceUrl ? '' : 'AI service URL is not configured'
   }
 };
 

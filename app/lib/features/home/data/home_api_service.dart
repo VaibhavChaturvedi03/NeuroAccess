@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class HomeApiService {
@@ -9,13 +8,10 @@ class HomeApiService {
       _baseUri = Uri.parse(baseUrl ?? _defaultBaseUrl);
 
   static const _defaultSessionId = 'flutter-app';
+  static const _renderBackendBaseUrl = 'https://neuroaccess-ta8w.onrender.com';
+
   static String get _defaultBaseUrl {
-    if (kIsWeb) {
-      return 'http://localhost:8080';
-    }
-    return defaultTargetPlatform == TargetPlatform.android
-        ? 'http://10.0.2.2:8080'
-        : 'http://localhost:8080';
+    return _renderBackendBaseUrl;
   }
 
   final http.Client _client;

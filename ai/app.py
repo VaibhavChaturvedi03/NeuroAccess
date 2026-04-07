@@ -185,4 +185,8 @@ def index():
     return render_template('index.html', result_text=result_text, task_type=task_type, audio_data=audio_data)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(
+        host='0.0.0.0',
+        port=int(os.environ.get('PORT', 5000)),
+        debug=os.environ.get('FLASK_DEBUG', '0') == '1'
+    )
