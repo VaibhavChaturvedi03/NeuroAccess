@@ -2,13 +2,13 @@
   "name": "neuroaccess-backend-api",
   "version": "1.0.0",
   "description": "This folder contains the backend scaffold for NeuroAccess.",
-  "main": "src/index.js",
+  "main": "index.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "node --watch src/index.js",
+    "start": "node index.js",
+    "dev": "node --watch index.js",
     "test": "echo \"No tests yet\""
   },
   "keywords": [],

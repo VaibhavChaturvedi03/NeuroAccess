@@ -1,5 +1,46 @@
 const { getProviderStatus } = require('./provider-registry');
 
+function toHttpError(statusCode, message) {
+  const error = new Error(message);
+  error.statusCode = statusCode;
+  return error;
+}
+
+async function callLocalAi({ task, payload, requestId }) {
+  const baseUrl = process.env.AI_SERVICE_URL;
+  const endpoint = `${baseUrl.replace(/\/$/, '')}/api/v1/process`;
+
+  const response = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-request-id': requestId
+    },
+    body: JSON.stringify({
+      task,
+      imageBase64: payload.imageBase64,
+      text: payload.text
+    })
+  });
+
+  const body = await response.json().catch(() => ({}));
+
+  if (!response.ok || body.success === false) {
+    throw toHttpError(
+      502,
+      body?.error?.message || `Local AI service returned HTTP ${response.status}`
+    );
+  }
+
+  return {
+    provider: 'localai',
+    task,
+    mode: 'enabled',
+    requestId,
+    ...body.data
+  };
+}
+
 async function proxyRequest({ provider, task, payload, requestId }) {
   const status = getProviderStatus(provider);
 
@@ -11,6 +52,10 @@ async function proxyRequest({ provider, task, payload, requestId }) {
       message: status.reason,
       requestId
     };
+  }
+
+  if (provider === 'localai') {
+    return callLocalAi({ task, payload, requestId });
   }
 
   return {

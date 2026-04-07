@@ -9,12 +9,14 @@ class ActionButtonsSection extends StatelessWidget {
     required this.onReset,
     required this.onVoiceControl,
     required this.onReadPage,
+    this.isBusy = false,
   });
 
   final VoidCallback onApply;
   final VoidCallback onReset;
   final VoidCallback onVoiceControl;
   final VoidCallback onReadPage;
+  final bool isBusy;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class ActionButtonsSection extends StatelessWidget {
                   borderRadius: BorderRadius.circular(14),
                 ),
               ),
-              onPressed: onApply,
+              onPressed: isBusy ? null : onApply,
               child: const Text(
                 'Apply Changes',
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
@@ -59,7 +61,7 @@ class ActionButtonsSection extends StatelessWidget {
                 borderRadius: BorderRadius.circular(14),
               ),
             ),
-            onPressed: onReset,
+            onPressed: isBusy ? null : onReset,
             child: const Text(
               'Reset',
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
@@ -79,7 +81,7 @@ class ActionButtonsSection extends StatelessWidget {
                     borderRadius: BorderRadius.circular(14),
                   ),
                 ),
-                onPressed: onVoiceControl,
+                onPressed: isBusy ? null : onVoiceControl,
                 icon: const Icon(Icons.mic, size: 22),
                 label: const Text(
                   'Voice Control',
@@ -98,7 +100,7 @@ class ActionButtonsSection extends StatelessWidget {
                     borderRadius: BorderRadius.circular(14),
                   ),
                 ),
-                onPressed: onReadPage,
+                onPressed: isBusy ? null : onReadPage,
                 icon: const Icon(Icons.volume_up, size: 22),
                 label: const Text('Read Page', style: TextStyle(fontSize: 18)),
               ),

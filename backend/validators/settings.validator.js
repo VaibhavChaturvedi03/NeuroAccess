@@ -7,7 +7,8 @@ const settingsSchema = z.object({
     tts: z.boolean().optional(),
     stt: z.boolean().optional(),
     contrastFixer: z.boolean().optional(),
-    imageLabeling: z.boolean().optional()
+    imageLabeling: z.boolean().optional(),
+    dyslexiaMode: z.boolean().optional()
   }),
   preferences: z.record(z.string(), z.any()).optional()
 });

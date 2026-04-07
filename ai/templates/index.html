@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Vision & Accessibility Studio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            max-width: 650px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        p.subtitle {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        .upload-box {
+            border: 2px dashed #bdc3c7;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            background-color: #fafbfc;
+            transition: border-color 0.3s ease;
+        }
+        .upload-box:hover {
+            border-color: #3498db;
+        }
+        select, input[type="file"] {
+            width: 100%;
+            max-width: 400px;
+            margin: 10px auto;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            display: block;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            max-width: 400px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result-box {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+            text-align: left;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .result-box h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+        }
+        pre {
+            white-space: pre-wrap; 
+            font-family: inherit;
+            margin: 0;
+            line-height: 1.5;
+            color: #34495e;
+        }
+        .error { 
+            color: #e74c3c; 
+            background-color: #fadbd8;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 20px; 
+            font-weight: bold; 
+        }
+        .audio-container {
+            margin-top: 25px;
+            padding: 20px;
+            background-color: #ebf5fb;
+            border: 1px solid #bce8f1;
+            border-radius: 8px;
+        }
+        audio {
+            width: 100%;
+            margin-top: 10px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>AI Vision Studio</h1>
+        <p class="subtitle">Upload an image and choose how you want the AI to process it.</p>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="error">
+            {% for message in messages %}
+              <p>Error: {{ message }}</p>
+            {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST" enctype="multipart/form-data" class="upload-box">
+            
+            <label for="task_type"><strong>1. Choose a Tool:</strong></label>
+            <select name="task_type" id="task_type" required>
+                <option value="alt_text" {% if task_type == 'alt_text' %}selected{% endif %}>🖼️ Generate Alt Text (Accessibility)</option>
+                <option value="ocr" {% if task_type == 'ocr' %}selected{% endif %}>📄 Extract Text (OCR Document Scanner)</option>
+                <option value="read_aloud" {% if task_type == 'read_aloud' %}selected{% endif %}>🔊 Read Aloud (Dyslexia Support)</option>
+                <option value="summarize" {% if task_type == 'summarize' %}selected{% endif %}>📝 Summarize Document (Quick Read)</option>
+            </select>
+            
+            <br>
+            
+            <label for="image"><strong>2. Upload an Image:</strong></label>
+            <input type="file" name="image" id="image" accept="image/*" required>
+            
+            <button type="submit" onclick="this.innerHTML='Processing... Please wait';">Process Image</button>
+        </form>
+
+        {% if result_text %}
+            <div class="result-box">
+                <h3>Extracted Details:</h3>
+                <pre>{{ result_text }}</pre>
+            </div>
+        {% endif %}
+
+        {% if audio_data %}
+            <div class="audio-container">
+                <h3 style="margin-top: 0; color: #2980b9;">Audio Playback</h3>
+                <audio controls autoplay>
+                    <source src="data:audio/mp3;base64,{{ audio_data }}" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
