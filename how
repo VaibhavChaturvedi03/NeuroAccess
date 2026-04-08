@@ -1,0 +1,14 @@
+[33mdf250a7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfrontend-fix[m[33m)[m fixes
+[33m6a60ebe[m Fixed frontrnd
+[33mfe388bc[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m setting up backend for the project
+[33m6dd38c7[m setting up extension
+[33md981daa[m removing failed test
+[33m042a67a[m fixing ci cd setup
+[33mef6670a[m fixing test files
+[33m70f289a[m Update README.md
+[33m138be3e[m Update README.md
+[33m1b2f33d[m Update README.md
+[33ma503746[m Update README.md
+[33m27b7af3[m Update README.md
+[33mc52eca4[m Add secure content.js without API keys
+[33m73023b2[m Initial commit: Autoaccess Extension project
