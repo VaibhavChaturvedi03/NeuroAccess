@@ -1,26 +1,34 @@
-// Background script that runs in the extension's background context
-console.log('NeuroAccess background script loaded');
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.local.set({
+    contrast: false,
+    tts: false,
+    keyboard: false,
+    aiImage: false,
+    dyslexia: false
+  });
 
-// Listen for installation
-chrome.runtime.onInstalled.addListener(details => {
-  if (details.reason === 'install') {
-    // First time installation
-    console.log('NeuroAccess installed');
-  } else if (details.reason === 'update') {
-    // Extension updated
-    console.log('NeuroAccess updated');
-  }
+  console.log("✅ NeuroAccess installed");
 });
 
-// Listen for messages from content scripts or popup
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.action === 'getExtensionInfo') {
-    // Get extension information
-    const extensionInfo = {
-      version: chrome.runtime.getManifest().version,
-      // Add more extension information as needed
-    };
-    sendResponse(extensionInfo);
+// ✅ SAFE INJECTION
+async function safeSend(tabId, message) {
+  try {
+    await chrome.scripting.executeScript({
+      target: { tabId },
+      files: ["src/content.js"] // ✅ KEEP THIS SAME
+    });
+
+    chrome.tabs.sendMessage(tabId, message);
+  } catch (e) {
+    console.log("❌ Injection failed:", e);
   }
-  return true;
+}
+
+chrome.runtime.onMessage.addListener((msg, sender) => {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    if (!tabs[0]) return;
+    safeSend(tabs[0].id, msg);
+  });
 });
+
+console.log("🚀 Background ready");
