@@ -1,0 +1,77 @@
+/* ================= BASE ACCESSIBILITY ================= */
+
+
+*:focus {
+  outline: 3px solid #1d4ed8 !important; /* blue-700 */
+  outline-offset: 2px !important;
+}
+
+*:focus-visible {
+  outline: 3px solid #1d4ed8 !important;
+  outline-offset: 2px !important;
+}
+
+/* ================= SKIP LINK ================= */
+
+#na-skip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 10px 14px;
+  z-index: 999999;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transform: translateY(-100%);
+  transition: transform 0.2s ease;
+}
+
+#na-skip:focus {
+  transform: translateY(0);
+}
+
+/* ================= HIGH CONTRAST MODE ================= */
+
+/* FULL PAGE DARK MODE (BEST FOR LOW VISION USERS) */
+.na-contrast * {
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+/* Links visible */
+.na-contrast a {
+  color: #3b82f6 !important; /* blue-500 */
+}
+
+/* Buttons readable */
+.na-contrast button {
+  background-color: #111 !important;
+  color: #fff !important;
+  border: 1px solid #fff !important;
+}
+
+/* ================= DYSLEXIA MODE ================= */
+
+.na-dyslexia {
+  font-family: Verdana, Arial, sans-serif !important;
+  letter-spacing: 0.12em !important;
+  line-height: 1.8 !important;
+  word-spacing: 0.2em !important;
+}
+
+/* ================= ISSUE HIGHLIGHT ================= */
+
+.na-issue {
+  outline: 2px solid #ef4444 !important; /* red-500 */
+  outline-offset: 2px;
+}
+
+/* ================= DEBUG ================= */
+
+.na-debug-outline {
+  outline: 1px dashed red;
+}
